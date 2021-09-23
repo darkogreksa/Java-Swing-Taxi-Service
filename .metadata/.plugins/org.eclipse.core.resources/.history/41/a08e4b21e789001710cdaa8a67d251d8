@@ -1,0 +1,27 @@
+package gui;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTable;
+import javax.swing.JToolBar;
+
+public class ZakazivanjeProzor extends JFrame{
+	private JToolBar mainToolBar;
+	private JButton btnAdd;
+	private JButton btnEdit;
+	private JButton btnDelete;
+	private JTable tblKompozicije;
+	
+	}
+
+	private void initActions() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void initGUI() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

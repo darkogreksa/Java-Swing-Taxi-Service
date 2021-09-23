@@ -1,0 +1,87 @@
+package gui;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+import net.miginfocom.swing.MigLayout;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class LoginProzor extends JFrame {
+	
+	private JLabel lblKorisnickoIme;
+	private JTextField txtKorisnickoIme;
+	private JLabel lblSifra;
+	private JPasswordField pfSifra;
+	private JButton btnOk;
+	private JButton btnPonisti;
+	
+	public LoginProzor(){
+		setTitle("Prijavljivanje");
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setLocationRelativeTo(null);
+		setResizable(false);
+		initGUI();
+		initActions();
+		pack();
+		
+	}
+
+	private void initGUI() {
+		MigLayout mig = new MigLayout("wrap 2", "[][]", "[]20[][]20[]");
+		setLayout(mig);
+		lblKorisnickoIme = new JLabel("Korisnicko ime");
+		txtKorisnickoIme = new JTextField(20);
+		lblSifra = new JLabel("Sifra");
+		pfSifra = new JPasswordField(20);
+		btnOk = new JButton("Ok");
+		btnPonisti = new JButton("Ponisti");
+		
+		add(lblKorisnickoIme);
+		add(txtKorisnickoIme);
+		add(lblSifra);
+		add(pfSifra);
+		add(new JLabel());
+		add(btnOk, "split2");
+		add(btnPonisti);
+	}
+	
+	private void initActions() {
+		
+		btnPonisti.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				LoginProzor.this.dispose();
+				LoginProzor.this.setVisible(false);
+			}
+		});
+		
+		btnOk.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String korisnickoIme = txtKorisnickoIme.getText().trim();
+				String sifra = new String(pfSifra.getPassword()).trim();
+				if (korisnickoIme.equals("dare") && sifra.equals("batica")){
+					LoginProzor.this.dispose();
+					LoginProzor.this.setVisible(false);
+					GlavniProzor glavni = new GlavniProzor();
+					glavni.setVisible(true);
+				}else{
+					(korisnickoIme.equals("") || sifra.equals("")) {
+				}
+					JOptionPane.showMessageDialog(null, 
+							"Niste uneli sve login podatke", 
+							"Greska", JOptionPane.WARNING_MESSAGE);
+				}
+				
+				
+			}
+		});
+	}
+
+}

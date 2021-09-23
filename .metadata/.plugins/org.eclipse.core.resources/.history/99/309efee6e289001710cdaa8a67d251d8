@@ -1,0 +1,16 @@
+package gui;
+
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
+public class GlavniProzor extends JFrame{
+	private JMenuBar mainMenu;
+	private JMenu artikliMenu;
+	private JMenuItem kompozicijeItem;
+	private JMenuItem artikliItem;
+	private JMenu zaposleniMenu;
+	private JMenuItem prodavciItem;
+
+}

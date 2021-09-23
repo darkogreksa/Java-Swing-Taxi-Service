@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Encapsulate field &apos;gui.GlavniProzor.ulogovaniKorisnik&apos; in &apos;gui.GlavniProzor&apos;&#x0D;&#x0A;- Original project: &apos;TaksiGreksa&apos;&#x0D;&#x0A;- Original element: &apos;gui.GlavniProzor.ulogovaniKorisnik&apos;&#x0D;&#x0A;- Getter method name: &apos;getUlogovaniKorisnik&apos;&#x0D;&#x0A;- Setter method name: &apos;setUlogovaniKorisnik&apos;&#x0D;&#x0A;- Field visibility: &apos;public&apos;&#x0D;&#x0A;- Use getter and setter methods in declaring type" comments="false" declaring="true" description="Encapsulate field &apos;ulogovaniKorisnik&apos;" flags="589830" getter="getUlogovaniKorisnik" id="org.eclipse.jdt.ui.self.encapsulate" input="/src&lt;gui{GlavniProzor.java[GlavniProzor^ulogovaniKorisnik" insertion="2" setter="setUlogovaniKorisnik" stamp="1504474106264" version="1.0" visibility="1"/>
+</session>

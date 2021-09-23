@@ -1,0 +1,91 @@
+package gui;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
+import korisnici.Korisnik;
+import korisnici.Vozaci;
+
+public class GlavniProzor extends JFrame {
+
+	private JMenuBar mainMenu;
+	private JMenu musterijeMenu;
+	private JMenuItem zakazivanjeVoznje;
+	private JMenuItem rezervisaneVoznje;
+	private JMenu vozaciMenu;
+	private JMenuItem preuzmiVoznju;
+	private Korisnik ulogovaniKorisnik;
+
+	public GlavniProzor(Korisnik ulogovaniKorisnik) {
+		setTitle("Fake Taxi");
+		ImageIcon ikonica = new ImageIcon(LoginProzor.class.getResource("/ikonice/faketaxi.png"));
+		setIconImage(ikonica.getImage());
+		setSize(400, 400);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setLocationRelativeTo(null);
+		setResizable(false);
+		this.ulogovaniKorisnik = ulogovaniKorisnik;
+		initGUI();
+		initActions();
+	}
+
+	public GlavniProzor() {
+
+	}
+
+	private void initActions() {
+
+		zakazivanjeVoznje.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ZakazivanjeProzor zakazivanje = new ZakazivanjeProzor();
+				zakazivanje.setVisible(true);
+
+			}
+		});
+		
+		rezervisaneVoznje.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ZakazaneVoznjeProzor rezervisane = new ZakazaneVoznjeProzor();
+				rezervisane.setVisible(true);
+
+			}
+		});
+
+	}
+
+	private void initGUI() {
+		mainMenu = new JMenuBar();
+		musterijeMenu = new JMenu("Musterije");
+		mainMenu.add(musterijeMenu);
+		zakazivanjeVoznje = new JMenuItem("Zakazivanje voznje");
+		rezervisaneVoznje = new JMenuItem("Rezervisani prevozi");
+		musterijeMenu.add(rezervisaneVoznje);
+		//if (!(ulogovaniKorisnik instanceof Vozaci)) {
+		//}
+		musterijeMenu.add(zakazivanjeVoznje);
+		
+		vozaciMenu = new JMenu("Vozaci");
+		preuzmiVoznju = new JMenuItem("Preuzimanje voznje");
+		vozaciMenu.add(preuzmiVoznju);
+		vozaciMenu.add(rezervisaneVoznje);
+		setJMenuBar(mainMenu);
+
+	}
+
+	public Korisnik getUlogovaniKorisnik() {
+		return ulogovaniKorisnik;
+	}
+
+	public void setUlogovaniKorisnik(Korisnik ulogovaniKorisnik) {
+		this.ulogovaniKorisnik = ulogovaniKorisnik;
+	}
+
+}

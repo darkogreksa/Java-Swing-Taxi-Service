@@ -1,0 +1,58 @@
+package gui;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class IzmenaKorisnika {
+	
+	private JLabel lblVrstaKorisnika;
+	private JComboBox cbVrstaKorisnika;
+
+	private JLabel lblImeKorisnika;
+	private JTextField txtImeKorisnika;
+
+	private JLabel lblPrezime;
+	private JTextField txtPrezime;
+
+	private JLabel lblJmbg;
+	private JTextField txtJmbg;
+
+	private JLabel lblAdresa;
+	private JTextField txtAdresa;
+
+	private JLabel lblPol;
+	private JComboBox cbPol;
+
+	private JLabel lblKorisnickoIme;
+	private JTextField txtKorisnickoIme;
+
+	private JLabel lblLozinka;
+	private JTextField txtLozinka;
+
+	private JLabel lblPlata;
+	private JTextField txtPlata;
+
+	private JLabel lblBrojClanskeKarte;
+	private JTextField txtBrojClanskeKarte;
+
+	private JLabel lblVozilo;
+	private JComboBox cbVozilo;
+
+	private JLabel lblTelefon;
+	private JTextField txtTelefon;
+
+	private JLabel lblTelefonskaLinija;
+	private JTextField txtTelefonskaLinija;
+
+	private JLabel lblTelefonskoOdeljenje;
+	private JTextField txtTelefonskoOdeljenje;
+
+	private JButton btnDodaj;
+	
+	public IzmenaKorisnika(){
+		
+	}
+
+}

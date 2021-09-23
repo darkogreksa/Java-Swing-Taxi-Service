@@ -1,0 +1,34 @@
+package gui;
+
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
+public class ZakazivanjeProzor extends JFrame{
+	private JLabel lblImePrezimeMusterije;
+	private JTextField txtImePrezimeMusterije;
+	private JPanel lblDatumPorudzbine;
+	private JLabel adresaPolaska;
+	private JComboBox vozac;
+	private JRadioButton porudzbina;
+	
+	public ZakazivanjeProzor(){
+		setTitle("Zakazivanje voznje")
+	}
+	
+	
+
+	private void initActions() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void initGUI() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

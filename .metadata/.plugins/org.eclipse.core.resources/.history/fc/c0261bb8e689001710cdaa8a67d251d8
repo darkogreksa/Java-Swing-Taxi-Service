@@ -1,0 +1,22 @@
+package gui;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTable;
+import javax.swing.JToolBar;
+
+public class ZakazivanjeProzor extends JFrame{
+	private JToolBar mainToolBar;
+	private JButton btnAdd;
+	private JButton btnEdit;
+	private JButton btnDelete;
+	private JTable tblKompozicije;
+	
+	public ZakazivanjeeProzor() {
+		setTitle("Kompozicije");
+		setSize(400, 300);
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setLocationRelativeTo(null);
+
+}

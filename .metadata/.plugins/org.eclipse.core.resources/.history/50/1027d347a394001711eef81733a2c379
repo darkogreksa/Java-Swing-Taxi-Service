@@ -1,0 +1,13 @@
+package taksiSluzba;
+
+public class Voznje {
+	
+	String imePrezimeMusterije;
+	String datumPolaska;
+	String adresaPolaska;
+	String nacinPorudzbine;
+	String dispecer;
+	String vrstaVozila;
+	String vozac;
+	String napomena;
+}

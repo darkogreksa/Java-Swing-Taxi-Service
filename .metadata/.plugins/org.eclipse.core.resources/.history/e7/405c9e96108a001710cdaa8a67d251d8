@@ -1,0 +1,80 @@
+package gui;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
+import net.miginfocom.swing.MigLayout;
+
+public class ZakazivanjeProzor extends JFrame{
+	private JLabel lblImePrezimeMusterije;
+	private JTextField txtImePrezimeMusterije;
+	private JPanel lblDatumPorudzbine;
+	private JLabel lblAdresaPolaska;
+	private JTextField txtAdresaPolaska;
+	private JComboBox cbVozac;
+	private JRadioButton rbMobilnaAplikacija;
+	private JRadioButton rbTelefonskiPoziv;
+	private ButtonGroup bgPorudzbina;
+	
+	private JLabel display_message;
+	
+	public ZakazivanjeProzor(){
+		setTitle("Zakazivanje voznje");
+		setSize(400, 400);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setLocationRelativeTo(null);
+		setResizable(false);
+		initGUI();
+		initActions();
+	}
+	
+	
+
+	private void initActions() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void initGUI() {
+		MigLayout mig = new MigLayout("wrap 2", "[][]", "[]10[][]10[]");
+		setLayout(mig);
+		lblImePrezimeMusterije = new JLabel("Ime i prezime musterije");
+		txtImePrezimeMusterije = new JTextField(20);
+		
+		lblAdresaPolaska = new JLabel("Adresa polaska");
+		txtAdresaPolaska = new JTextField(20);
+
+		rbMobilnaAplikacija = new JRadioButton("Mobilna aplikacija");
+		rbTelefonskiPoziv = new JRadioButton("Telefonski poziv");
+		bgPorudzbina = new ButtonGroup();
+		add(lblImePrezimeMusterije);
+		add(txtImePrezimeMusterije);
+		add(lblAdresaPolaska);
+		add(txtAdresaPolaska);
+		add(rbMobilnaAplikacija);
+		add(rbTelefonskiPoziv);
+		add(display_message);
+		bgPorudzbina = new ButtonGroup();
+		bgPorudzbina.add(rbMobilnaAplikacija);
+		bgPorudzbina.add(rbTelefonskiPoziv);
+		
+		
+
+			if(rbMobilnaAplikacija.isSelected())
+			{
+				
+				display_message.setText("Radi");
+			}
+		
+		
+		
+		
+		
+	}
+
+}

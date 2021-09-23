@@ -1,0 +1,9 @@
+package taksiSluzba;
+
+public class Voznje {
+	
+	String adresaPolaska;
+	String musterija;
+	String vozac;
+
+}

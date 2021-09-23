@@ -1,0 +1,209 @@
+package gui;
+
+
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Properties;
+
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField.AbstractFormatter;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
+
+import net.miginfocom.swing.MigLayout;
+
+public class ZakazivanjeProzor extends JFrame {
+	
+	private JLabel lblImePrezimeMusterije;
+	private JTextField txtImePrezimeMusterije;
+	
+	private JLabel lblDatumPorudzbine;
+	private JDatePanelImpl pnlDatumPorudzbine;
+	
+	private JLabel lblAdresaPolaska;
+	private JTextField txtAdresaPolaska;
+	
+	private JLabel lblVozac;
+	private JComboBox cbVozac;
+	
+	private JComboBox cbDispecer;
+	private JLabel lblDispecer;
+	
+	private JLabel lblVozilo;
+	private JComboBox cbVozilo;
+
+	private JRadioButton rbMobilnaAplikacija;
+	private JRadioButton rbTelefonskiPoziv;
+	private ButtonGroup bgPorudzbina;
+	
+	private JLabel lblNapomena;
+	private JTextField txtNapomena;
+	
+	private JButton btnPotvrdi;
+
+	public ZakazivanjeProzor() {
+		setTitle("Zakazivanje voznje");
+		ImageIcon ikonica = new ImageIcon
+				(LoginProzor.class.getResource("/ikonice/faketaxi.png"));
+		setIconImage(ikonica.getImage());
+		setSize(400, 350);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setLocationRelativeTo(null);
+		setResizable(false);
+		initGUI();
+		initActions();
+	}
+
+	private void initActions() {
+		rbMobilnaAplikacija.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				rbMobilnaAplikacija.addItemListener(evt -> {
+				    cbVozac.setEnabled(evt.getStateChange() == ItemEvent.SELECTED);
+				    txtNapomena.setEnabled(evt.getStateChange() == ItemEvent.SELECTED);
+				});
+			}
+		});
+		rbTelefonskiPoziv.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				rbTelefonskiPoziv.addItemListener(evt -> {
+					cbDispecer.setEnabled(evt.getStateChange() == ItemEvent.SELECTED);
+				});
+			}
+		});
+	}
+	
+	BufferedReader input = new BufferedReader(new FileReader("/TaksiGreksa/src/txt/automobili"));
+	List<String> strings = new ArrayList<String>();
+	try {
+	  String line = null;
+	  while (( line = input.readLine()) != null){
+	    strings.add(line);
+	  }
+	}
+
+	catch (FileNotFoundException e) {
+	    System.err.println("Error, file " + filePath + " didn't exist.");
+	}
+	finally {
+	    input.close();
+	}
+
+	String[] lineArray = strings.toArray(new String[]{});
+
+	JComboBox comboBox = new JComboBox(lineArray);
+	
+	public class DateLabelFormatter extends AbstractFormatter {
+
+	    private String datePattern = "dd.MM.yyyy.";
+	    private SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
+
+	    @Override
+	    public Object stringToValue(String text) throws ParseException {
+	        return dateFormatter.parseObject(text);
+	    }
+
+	    @Override
+	    public String valueToString(Object value) throws ParseException {
+	        if (value != null) {
+	            Calendar cal = (Calendar) value;
+	            return dateFormatter.format(cal.getTime());
+	        }
+
+	        return "";
+	    }
+
+	}
+
+	private void initGUI() {
+		MigLayout mig = new MigLayout("wrap 2", "[][]", "[]10[][]10[]");
+		setLayout(mig);
+		lblImePrezimeMusterije = new JLabel("Ime i prezime musterije");
+		txtImePrezimeMusterije = new JTextField(20);
+		
+		lblDatumPorudzbine = new JLabel("Datum zakazivanja voznje:");
+		UtilDateModel model = new UtilDateModel();
+		model.setDate(20,04,2014);
+		Properties datum = new Properties();
+		datum.put("text.today", "Today");
+		datum.put("text.month", "Month");
+		datum.put("text.year", "Year");
+		JDatePanelImpl datePanel = new JDatePanelImpl(model, datum);
+		JDatePickerImpl pnlDatumPorudzbine = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+
+		lblAdresaPolaska = new JLabel("Adresa polaska");
+		txtAdresaPolaska = new JTextField(20);
+		
+		cbDispecer = new JComboBox();
+		lblDispecer = new JLabel("Dispecer sa kojim ste razgovarali");
+		
+		cbVozac = new JComboBox();
+		lblVozac = new JLabel("Izaberite vozaca");
+		
+		lblVozilo = new JLabel("Vrsta vozila");
+		cbVozilo = new JComboBox();
+
+		rbMobilnaAplikacija = new JRadioButton("Mobilna aplikacija");
+		rbTelefonskiPoziv = new JRadioButton("Telefonski poziv");
+		bgPorudzbina = new ButtonGroup();
+		
+		lblNapomena = new JLabel("Napomena");
+		txtNapomena = new JTextField(20);
+		
+		btnPotvrdi = new JButton("Potvrdi");
+		
+		
+		add(lblImePrezimeMusterije);
+		add(txtImePrezimeMusterije);
+		
+		add(lblDatumPorudzbine);
+		add(pnlDatumPorudzbine);
+		
+		add(lblAdresaPolaska);
+		add(txtAdresaPolaska);
+		
+		add(rbMobilnaAplikacija);
+		add(rbTelefonskiPoziv);
+		
+		add(lblVozac);
+		add(cbVozac);
+		
+		add(lblDispecer);
+		add(cbDispecer);
+		
+		add(lblVozilo);
+		add(cbVozilo);
+		
+		bgPorudzbina = new ButtonGroup();
+		bgPorudzbina.add(rbMobilnaAplikacija);
+		bgPorudzbina.add(rbTelefonskiPoziv);
+		
+		add(lblNapomena);
+		add(txtNapomena);
+		
+		add(btnPotvrdi, "split2");
+
+	}
+
+}

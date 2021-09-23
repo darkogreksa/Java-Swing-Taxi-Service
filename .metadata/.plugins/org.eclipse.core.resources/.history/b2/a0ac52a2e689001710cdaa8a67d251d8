@@ -1,0 +1,15 @@
+package gui;
+
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.JToolBar;
+
+public class ZakazivanjeProzor {
+	private JToolBar mainToolBar;
+	private JButton btnAdd;
+	private JButton btnEdit;
+	private JButton btnDelete;
+	private JTable tblKompozicije;
+	
+
+}

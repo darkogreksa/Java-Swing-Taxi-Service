@@ -1,0 +1,55 @@
+package gui;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
+public class GlavniProzor extends JFrame{
+	
+	private JMenuBar mainMenu;
+	private JMenu musterijeMenu;
+	private JMenuItem zakazivanjeVoznje;
+	
+	public GlavniProzor() {
+		setTitle("Fake Taxi");
+		setSize(400, 400);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setLocationRelativeTo(null);
+		setResizable(false);
+		initGUI();
+		initActions();
+	}
+
+	private void initActions() {
+		
+		zakazivanjeVoznje.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ZakazivanjeProzor zakazivanje = new ZakazivanjeProzor();
+				zakazivanje.setVisible(true);
+				
+			}
+		});
+		
+	}
+
+	private void initGUI() {
+		mainMenu = new JMenuBar();
+		musterijeMenu = new JMenu("Musteije");
+		zakazivanjeVoznje = new JMenuItem();
+		
+		
+		
+		mainMenu.add(musterijeMenu);
+		musterijeMenu.add(zakazivanjeVoznje);
+		setJMenuBar(mainMenu);
+		
+	}
+	
+	
+
+}
